@@ -1,108 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <title>Zia's Jewelry</title>
-  <link rel="stylesheet" href="main.css?v=999">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zia's Chest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
 </head>
-
 <body>
-  
-  <div class="background-image"></div>
 
+  <div class="background-image"></div>
+  <div class="cursor-glow"></div>
+
+  <!-- Floating decorative chests -->
+  <div class="floating-chest" style="--size:40px; --top:10%; --left:5%; --speed:6s;"></div>
+  <div class="floating-chest" style="--size:30px; --top:40%; --left:80%; --speed:4s;"></div>
+  <div class="floating-chest" style="--size:35px; --top:70%; --left:20%; --speed:5s;"></div>
+  <div class="floating-chest" style="--size:25px; --top:60%; --left:60%; --speed:6.5s;"></div>
+  <div class="floating-chest" style="--size:45px; --top:15%; --left:70%; --speed:5.5s;"></div>
+  <div class="floating-chest" style="--size:30px; --top:85%; --left:40%; --speed:7s;"></div>
 
   <div class="main-page">
-  <div class="cursor-glow"></div>
-    <!-- Floating decorative chests -->
-    <div class="floating-chest" style="--size:40px; --top:10%; --left:5%; --speed:6s;"></div>
-    <div class="floating-chest" style="--size:30px; --top:40%; --left:80%; --speed:4s;"></div>
-    <div class="floating-chest" style="--size:35px; --top:70%; --left:20%; --speed:5s;"></div>
-    <div class="floating-chest" style="--size:25px; --top:60%; --left:60%; --speed:6.5s;"></div>
-    <div class="floating-chest" style="--size:45px; --top:15%; --left:70%; --speed:5.5s;"></div>
-    <div class="floating-chest" style="--size:30px; --top:85%; --left:40%; --speed:7s;"></div>
 
-    <!-- Page content -->
-    <header class="site-header">
-      <div class="|header-left">
+    <!-- HEADER -->
+    <header class="site-header" id="siteHeader">
+      <div class="header-left">
         <div class="logo-circle">
-          <img scr="images/Logo_Zia_Chest.png" alt ="Zia Logo">
+          <img src="images/Logo_Zia_Chest.png" alt="Zia Logo">
         </div>
-        <h1>Zia's Chest</h1>
-        <p class="Message">Welcome to the wonderful world of Zia’s chest, where the world becomes undone and rather then choose an item it
-          chooses you. ;- )</p>
+        <span class="brand-name">Zia's Chest</span>
       </div>
-
       <nav class="header-right">
-        <div class="header-item nav">Services</div>
-        <div class="header-item nav">Work</div>
-        <div class="header-item nav">Contact</div>
-        <div class="header-item nav menu">☰</div>
+        <div class="header-item nav" data-modal="services">Services</div>
+        <div class="header-item nav" data-modal="work">Work</div>
+        <div class="header-item nav" data-modal="contact">Contact</div>
+        <div class="header-item nav book-btn" data-modal="booking">Book</div>
+        <div class="header-item nav menu-btn">☰</div>
       </nav>
     </header>
 
-    <section class="pricing">
-      <h2>Prices</h2>
-      <div class="item">
-        <span class="item-name">All current items</span>
-        <span class="item-price">$10</span>
-        <div class="hover-box">Pay what you can!</div>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Handcrafted in Ottawa</p>
+        <h1 class="hero-title">Where the piece<br><em>chooses you</em></h1>
+        <p class="hero-sub">Custom jewelry, repairs & wearable art — made with intention.</p>
+        <button class="cta-btn" data-modal="booking">Book a Consultation</button>
       </div>
     </section>
 
-    <section class="payment">
-      <h2>Payment Method</h2>
-      <p>We currently accept <strong>e-transfer</strong>.</p>
-      <p>Please send payment to: <strong>zia.macleancourville@outlook.com</strong></p>
-      <p>Please include a comment with the item name and amount purchased for each transaction!</p>
+    <!-- PRICING -->
+    <section class="pricing-section">
+      <h2 class="section-title">Current Collection</h2>
+      <div class="pricing-row">
+        <div class="price-card">
+          <span class="price-label">All current items</span>
+          <span class="price-amount">$10</span>
+          <span class="price-note">Pay what you can ✦</span>
+        </div>
+      </div>
     </section>
-  
+
+    <!-- PAYMENT -->
+    <section class="payment-section">
+      <h2 class="section-title">Payment</h2>
+      <div class="payment-card">
+        <p>We accept <strong>e-transfer</strong></p>
+        <p class="payment-email">zia.macleancourville@outlook.com</p>
+        <p class="payment-note">Include item name & quantity in your transfer comment.</p>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
     <section class="photos">
-      <h2>Gallery (Taps: <span id="tapCounter">0</span>)</h2>
+      <h2 class="section-title">Gallery <span class="tap-count">(Taps: <span id="tapCounter">0</span>)</span></h2>
       <div class="gallery-viewport">
         <div class="gallery-box">
-        <div class="gallery-track" id="galleryTrack">
-          <div class="photo-item" style="background: red;" data-title="Ruby Gem" data-price="$10" data-desc="A brilliant red stone."></div>
-          <div class="photo-item" style="background: orange;" data-title="Amber Glow" data-price="$10" data-desc="Warm orange hues."></div>
-          <div class="photo-item" style="background: yellow;" data-title="Sun Citrine" data-price="$10" data-desc="Bright yellow sparkles."></div>
-          <div class="photo-item" style="background: green;" data-title="Emerald Cut" data-price="$10" data-desc="Deep forest green gem."></div>
-          <div class="photo-item" style="background: blue;" data-title="Sapphire Blue" data-price="$10" data-desc="Ocean blue sapphire."></div>
-          <div class="photo-item" style="background: indigo;" data-title="Indigo Bead" data-price="$10" data-desc="Mystic dark indigo."></div>
-          <div class="photo-item" style="background: violet;" data-title="Amethyst" data-price="$10" data-desc="Royal purple crystal."></div>
-          <div class="photo-item" style="background: pink;" data-title="Rose Quartz" data-price="$10" data-desc="Soft romantic pink."></div>
-          <div class="photo-item" style="background: brown;" data-title="Tiger Eye" data-price="$10" data-desc="Earthy natural brown."></div>
-          
-          <div class="photo-item" style="background: red;"></div>
-          <div class="photo-item" style="background: orange;"></div>
-          <div class="photo-item" style="background: yellow;"></div>
-          <div class="photo-item" style="background: green;"></div>
+          <div class="gallery-track" id="galleryTrack">
+            <div class="photo-item" style="background:#c0392b;" data-title="Ruby Gem" data-price="$10" data-desc="A brilliant red stone."></div>
+            <div class="photo-item" style="background:#e67e22;" data-title="Amber Glow" data-price="$10" data-desc="Warm orange hues."></div>
+            <div class="photo-item" style="background:#f1c40f;" data-title="Sun Citrine" data-price="$10" data-desc="Bright yellow sparkles."></div>
+            <div class="photo-item" style="background:#27ae60;" data-title="Emerald Cut" data-price="$10" data-desc="Deep forest green gem."></div>
+            <div class="photo-item" style="background:#2980b9;" data-title="Sapphire Blue" data-price="$10" data-desc="Ocean blue sapphire."></div>
+            <div class="photo-item" style="background:#34495e;" data-title="Indigo Bead" data-price="$10" data-desc="Mystic dark indigo."></div>
+            <div class="photo-item" style="background:#8e44ad;" data-title="Amethyst" data-price="$10" data-desc="Royal purple crystal."></div>
+            <div class="photo-item" style="background:#e91e8c;" data-title="Rose Quartz" data-price="$10" data-desc="Soft romantic pink."></div>
+            <div class="photo-item" style="background:#795548;" data-title="Tiger Eye" data-price="$10" data-desc="Earthy natural brown."></div>
+            <!-- Duplicates for seamless loop -->
+            <div class="photo-item" style="background:#c0392b;"></div>
+            <div class="photo-item" style="background:#e67e22;"></div>
+            <div class="photo-item" style="background:#f1c40f;"></div>
+            <div class="photo-item" style="background:#27ae60;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>Designed by <strong>Sequoya Maclean-Courville</strong> &mdash; SEG3125 &middot; University of Ottawa</p>
+      <p class="footer-copy">&copy; 2025 Zia's Chest. All rights reserved.</p>
+    </footer>
+
+  </div>
+
+  <!-- CORNER NAME -->
+  <div class="corner-name">ZIA</div>
+
+  <!-- ═══════════════ MODALS ═══════════════ -->
+
+  <!-- SERVICES MODAL -->
+  <div class="modal-overlay" id="modal-services">
+    <div class="modal-panel">
+      <button class="modal-close">&times;</button>
+      <h2 class="modal-title">Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">✦</div>
+          <h3>Custom Pieces</h3>
+          <p>Collaborate with Zia to design a one-of-a-kind piece from scratch.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">⟳</div>
+          <h3>Jewelry Repair</h3>
+          <p>Restore your cherished pieces — clasps, resizing, stone replacement.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">◈</div>
+          <h3>Memorial Jewelry</h3>
+          <p>Transform meaningful materials into lasting wearable memories.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">❋</div>
+          <h3>Gift Consultation</h3>
+          <p>Not sure what to give? Let Zia help you find the perfect piece.</p>
         </div>
       </div>
     </div>
-    </section>
-    
-    <div id="photoModal" class="modal-overlay">
-      <div class="modal-card">
-        <button class="close-btn" id="closeBtn">&times;</button>
-        <div class="modal-body">
-          <div class="modal-image-view" id="modalImage"></div>
-          <div class="modal-info-panel">
-            <h3 id="modalTitle">Item Name</h3>
-            <p id="modalDesc">Description goes here...</p>
-            <div class="modal-price" id="modalPrice">$10</div>
+  </div>
+
+  <!-- WORK MODAL -->
+  <div class="modal-overlay" id="modal-work">
+    <div class="modal-panel">
+      <button class="modal-close">&times;</button>
+      <h2 class="modal-title">Our Work</h2>
+      <p class="modal-sub">A selection of pieces from Zia's portfolio.</p>
+      <div class="work-grid">
+        <div class="work-item" style="background:#c0392b;"></div>
+        <div class="work-item" style="background:#8e44ad;"></div>
+        <div class="work-item" style="background:#27ae60;"></div>
+        <div class="work-item" style="background:#2980b9;"></div>
+        <div class="work-item" style="background:#e91e8c;"></div>
+        <div class="work-item" style="background:#795548;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT MODAL -->
+  <div class="modal-overlay" id="modal-contact">
+    <div class="modal-panel modal-panel--narrow">
+      <button class="modal-close">&times;</button>
+      <h2 class="modal-title">Get in Touch</h2>
+      <div class="contact-info">
+        <div class="contact-row">
+          <span class="contact-icon">✉</span>
+          <div>
+            <p class="contact-label">Email</p>
+            <p class="contact-value">zia.macleancourville@outlook.com</p>
+          </div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon">📍</span>
+          <div>
+            <p class="contact-label">Location</p>
+            <p class="contact-value">Ottawa, Ontario</p>
+          </div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon">⏱</span>
+          <div>
+            <p class="contact-label">Response Time</p>
+            <p class="contact-value">Within 48 hours</p>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
+  <!-- BOOKING MODAL (multi-step) -->
+  <div class="modal-overlay" id="modal-booking">
+    <div class="modal-panel modal-panel--booking">
+      <button class="modal-close">&times;</button>
 
-  <!-- Large corner name -->
-  <div class="corner-name">ZIA</div>
+      <!-- Step indicators -->
+      <div class="step-indicators">
+        <div class="step-dot active" data-step="1"></div>
+        <div class="step-line"></div>
+        <div class="step-dot" data-step="2"></div>
+        <div class="step-line"></div>
+        <div class="step-dot" data-step="3"></div>
+        <div class="step-line"></div>
+        <div class="step-dot" data-step="4"></div>
+      </div>
 
+      <!-- STEP 1: Service Selection -->
+      <div class="booking-step active" id="step-1">
+        <h2 class="modal-title">Choose a Service</h2>
+        <p class="modal-sub">What brings you to Zia's Chest?</p>
+        <div class="booking-services-grid">
+          <div class="booking-service-card" data-service="Custom Piece">
+            <div class="bs-icon">✦</div>
+            <h3>Custom Piece</h3>
+            <p>Design something unique</p>
+          </div>
+          <div class="booking-service-card" data-service="Jewelry Repair">
+            <div class="bs-icon">⟳</div>
+            <h3>Jewelry Repair</h3>
+            <p>Restore a beloved piece</p>
+          </div>
+          <div class="booking-service-card" data-service="Memorial Jewelry">
+            <div class="bs-icon">◈</div>
+            <h3>Memorial Jewelry</h3>
+            <p>Turn memories into art</p>
+          </div>
+          <div class="booking-service-card" data-service="Gift Consultation">
+            <div class="bs-icon">❋</div>
+            <h3>Gift Consultation</h3>
+            <p>Find the perfect gift</p>
+          </div>
+        </div>
+        <div class="step-nav">
+          <span></span>
+          <button class="step-btn next-btn" id="next-1" disabled>Next →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Date & Time -->
+      <div class="booking-step" id="step-2">
+        <h2 class="modal-title">Pick a Date & Time</h2>
+        <p class="modal-sub">Consultations are 30–60 minutes.</p>
+        <div class="datetime-grid">
+          <div class="input-group">
+            <label>Preferred Date</label>
+            <input type="date" id="booking-date" min="">
+          </div>
+          <div class="input-group">
+            <label>Preferred Time</label>
+            <select id="booking-time">
+              <option value="">Select a time</option>
+              <option>10:00 AM</option>
+              <option>11:00 AM</option>
+              <option>1:00 PM</option>
+              <option>2:00 PM</option>
+              <option>3:00 PM</option>
+              <option>4:00 PM</option>
+            </select>
+          </div>
+          <div class="input-group full-width">
+            <label>Notes (optional)</label>
+            <textarea id="booking-notes" placeholder="Tell Zia a bit about what you have in mind..."></textarea>
+          </div>
+        </div>
+        <div class="step-nav">
+          <button class="step-btn back-btn" data-target="1">← Back</button>
+          <button class="step-btn next-btn" id="next-2" disabled>Next →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Contact Info -->
+      <div class="booking-step" id="step-3">
+        <h2 class="modal-title">Your Information</h2>
+        <p class="modal-sub">So Zia knows how to reach you.</p>
+        <div class="contact-form-grid">
+          <div class="input-group">
+            <label>First Name</label>
+            <input type="text" id="booking-firstname" placeholder="Amara">
+          </div>
+          <div class="input-group">
+            <label>Last Name</label>
+            <input type="text" id="booking-lastname" placeholder="Osei">
+          </div>
+          <div class="input-group full-width">
+            <label>Email Address</label>
+            <input type="email" id="booking-email" placeholder="you@example.com">
+          </div>
+          <div class="input-group full-width">
+            <label>Phone (optional)</label>
+            <input type="tel" id="booking-phone" placeholder="+1 (613) 000-0000">
+          </div>
+        </div>
+        <div class="step-nav">
+          <button class="step-btn back-btn" data-target="2">← Back</button>
+          <button class="step-btn next-btn" id="next-3" disabled>Next →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Confirmation -->
+      <div class="booking-step" id="step-4">
+        <div class="confirm-icon">✦</div>
+        <h2 class="modal-title">You're all set!</h2>
+        <p class="modal-sub">Here's a summary of your booking request.</p>
+        <div class="confirm-summary" id="confirmSummary"></div>
+        <p class="confirm-note">Zia will reach out within 48 hours to confirm your appointment.</p>
+        <div class="step-nav centered">
+          <button class="step-btn cta-confirm" id="confirmBtn">Send Request ✦</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ITEM MODAL (gallery) -->
+  <div class="modal-overlay" id="photoModal">
+    <div class="modal-panel modal-panel--item">
+      <button class="modal-close" id="closeBtn">&times;</button>
+      <div class="item-modal-body">
+        <div class="item-modal-image" id="modalImage"></div>
+        <div class="item-modal-info">
+          <h3 id="modalTitle">Item Name</h3>
+          <p id="modalDesc">Description goes here...</p>
+          <div class="item-modal-price" id="modalPrice">$10</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="main.js"></script>
 </body>
-
 </html>
