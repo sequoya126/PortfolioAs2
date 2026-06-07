@@ -45,25 +45,13 @@ document.querySelectorAll('.modal-overlay').forEach(overlay => {
 });
 
 // ── Booking flow ──
-let bookingData = { service: null, date: null, time: null, notes: null, firstName: null, lastName: null, email: null, phone: null };
+let bookingData = { service: null };
 
 function resetBooking() {
-  bookingData = { service: null, date: null, time: null, notes: null, firstName: null, lastName: null, email: null, phone: null };
+  bookingData = { service: null };
   goToStep(1);
   document.querySelectorAll('.booking-service-card').forEach(c => c.classList.remove('selected'));
   document.getElementById('next-1').disabled = true;
-  const dateInput = document.getElementById('booking-date');
-  if (dateInput) {
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.min = today;
-    dateInput.value = '';
-  }
-  const timeSelect = document.getElementById('booking-time');
-  if (timeSelect) timeSelect.value = '';
-  ['booking-firstname','booking-lastname','booking-email','booking-phone','booking-notes'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.value = '';
-  });
 }
 
 function goToStep(n) {
@@ -75,6 +63,16 @@ function goToStep(n) {
     if (i + 1 === n) dot.classList.add('active');
     else if (i + 1 < n) dot.classList.add('done');
   });
+
+  // Reinitialize Calendly widget when reaching step 2
+  if (n === 2 && window.Calendly) {
+    const widget = document.getElementById('calendlyWidget');
+    widget.innerHTML = '';
+    Calendly.initInlineWidget({
+      url: `https://calendly.com/zia-chest/30min?hide_event_type_details=1&primary_color=c9a84c`,
+      parentElement: widget,
+    });
+  }
 }
 
 // Service selection
@@ -90,71 +88,11 @@ document.querySelectorAll('.booking-service-card').forEach(card => {
 // Step 1 → 2
 document.getElementById('next-1').addEventListener('click', () => goToStep(2));
 
-// Step 2 validation
-function validateStep2() {
-  const date = document.getElementById('booking-date').value;
-  const time = document.getElementById('booking-time').value;
-  document.getElementById('next-2').disabled = !(date && time);
-}
-document.getElementById('booking-date').addEventListener('change', validateStep2);
-document.getElementById('booking-time').addEventListener('change', validateStep2);
-
-document.getElementById('next-2').addEventListener('click', () => {
-  bookingData.date = document.getElementById('booking-date').value;
-  bookingData.time = document.getElementById('booking-time').value;
-  bookingData.notes = document.getElementById('booking-notes').value;
-  goToStep(3);
-});
-
-// Step 3 validation
-function validateStep3() {
-  const fn = document.getElementById('booking-firstname').value.trim();
-  const ln = document.getElementById('booking-lastname').value.trim();
-  const em = document.getElementById('booking-email').value.trim();
-  document.getElementById('next-3').disabled = !(fn && ln && em.includes('@'));
-}
-['booking-firstname','booking-lastname','booking-email'].forEach(id => {
-  document.getElementById(id).addEventListener('input', validateStep3);
-});
-
-document.getElementById('next-3').addEventListener('click', () => {
-  bookingData.firstName = document.getElementById('booking-firstname').value.trim();
-  bookingData.lastName  = document.getElementById('booking-lastname').value.trim();
-  bookingData.email     = document.getElementById('booking-email').value.trim();
-  bookingData.phone     = document.getElementById('booking-phone').value.trim();
-
-  // Build summary
-  const formattedDate = new Date(bookingData.date + 'T12:00:00').toLocaleDateString('en-CA', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
-  document.getElementById('confirmSummary').innerHTML = `
-    <strong>Service:</strong> ${bookingData.service}<br>
-    <strong>Date:</strong> ${formattedDate}<br>
-    <strong>Time:</strong> ${bookingData.time}<br>
-    <strong>Name:</strong> ${bookingData.firstName} ${bookingData.lastName}<br>
-    <strong>Email:</strong> ${bookingData.email}<br>
-    ${bookingData.phone ? `<strong>Phone:</strong> ${bookingData.phone}<br>` : ''}
-    ${bookingData.notes ? `<strong>Notes:</strong> ${bookingData.notes}` : ''}
-  `;
-  goToStep(4);
-});
-
 // Back buttons
 document.querySelectorAll('.back-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     goToStep(parseInt(btn.getAttribute('data-target')));
   });
-});
-
-// Confirm button
-document.getElementById('confirmBtn').addEventListener('click', () => {
-  document.getElementById('confirmSummary').innerHTML = `
-    <div style="text-align:center; padding: 1rem 0;">
-      <div style="font-size:2rem; margin-bottom:0.5rem;">✦</div>
-      <strong>Request sent!</strong><br>
-      Zia will be in touch at <em>${bookingData.email}</em> within 48 hours.
-    </div>
-  `;
-  document.getElementById('confirmBtn').style.display = 'none';
-  document.querySelector('.confirm-note').style.display = 'none';
 });
 
 // ── Gallery tap counter & modal ──
