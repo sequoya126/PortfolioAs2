@@ -1,0 +1,218 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Center everything */
+  .page {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-box {
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    width: 80px;
+    height: 40px;
+    /*  background-color: #8fa16f; /* vintage green */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 5px;
+    z-index: 5;
+  }
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #e6e2d3;
+    font-family: 'Courier New', Courier, monospace;
+    perspective: 800px; /* Needed for 3D lid rotation */
+  }
+  :root {
+    --wood-dark: #3a2a1d;
+    --wood-light: #6d4c31;
+    --iron: #2a2a2a;
+    --gold: #b8860b;
+    --magic-cyan: #00f2ff;
+  }
+  
+  .chest-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    perspective: 1000px;
+  }
+  
+  .chest {
+    position: relative;
+    width: 16rem;
+    height: 12rem;
+    cursor: pointer;
+    animation: chestWobble 6s ease-in-out infinite;
+  }
+  
+  /* --- THE BOX (The heavy base) --- */
+  .box {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 65%;
+    background: var(--wood-dark);
+    border: 4px solid var(--iron);
+    border-radius: 0 0 8px 8px;
+    z-index: 1;
+    overflow: hidden; /* Keeps glow inside */
+  }
+  
+  .box-inner {
+    position: absolute;
+    inset: 5px;
+    background: #1a110a; /* Dark pit */
+    border-radius: 4px;
+  }
+  
+  .internal-glow {
+    position: absolute;
+    bottom: -20px; /* Source starts at the BOTTOM of the pit */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at bottom, var(--magic-cyan) 0%, transparent 80%);
+    opacity: 0;
+    filter: blur(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  /* --- THE LID (The swinging top) --- */
+  .lid {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 35%;
+    z-index: 10;
+    transform-origin: center bottom; /* Realistic hinge pivot */
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+  
+  .lid-main {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--wood-light), var(--wood-dark));
+    border: 4px solid var(--iron);
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+  }
+  
+  /* The Connector: Stretches between lid and box */
+  .lid-back-panel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #222; /* Dark interior of the lid */
+    transform-origin: bottom;
+    transform: rotateX(-90deg); /* Hidden when closed */
+    transition: transform 0.7s ease;
+  }
+  
+  /* --- KEYHOLE (Metal Plate) --- */
+  .metal-plate {
+    background: linear-gradient(135deg, var(--gold), #8b6508);
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.5);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  .chest-keyhole {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .chest-keyhole .circle {
+    width: 10px;
+    height: 10px;
+    background: #111;
+    border-radius: 50%;
+  }
+  
+  .chest-keyhole .slot {
+    width: 4px;
+    height: 8px;
+    background: #111;
+    margin-top: -1px; /* Overlap slightly for a seamless "keyhole" shape */
+  }
+  
+  /* --- HOVER EFFECTS --- */
+  
+  .chest:hover .lid {
+    /* Rotate lid back into 3D space */
+    transform: rotateX(-70deg) translateY(-5px);
+  }
+  
+  .chest:hover .lid-back-panel {
+    /* Reveals the "inside" of the lid as it opens */
+    transform: rotateX(-20deg);
+  }
+  
+  .chest:hover .internal-glow {
+    opacity: 0.9;
+    transform: translateY(-10px); /* Light rises as lid opens */
+    animation: magicPulse 2s infinite alternate;
+  }
+  
+  /* --- DETAILS & ANIMATIONS --- */
+  
+  .metal-trim-left, .metal-trim-right {
+    position: absolute;
+    top: 0;
+    width: 15px;
+    height: 100%;
+    background: rgba(0,0,0,0.2);
+    border-left: 2px solid var(--iron);
+    border-right: 2px solid var(--iron);
+  }
+  .metal-trim-left { left: 20px; }
+  .metal-trim-right { right: 20px; }
+  
+  @keyframes chestWobble {
+    0%, 100% { transform: translateY(0) rotateZ(-0.5deg); }
+    50% { transform: translateY(-8px) rotateZ(0.5deg); }
+  }
+  
+  @keyframes magicPulse {
+    from { filter: blur(20px) brightness(1); }
+    to { filter: blur(25px) brightness(1.5); }
+  }
+  /* Name */
+  .name {
+    font-weight: bold;
+    margin-bottom: 5rem;
+    margin-right: 0rem;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  
+  /* Subtle side-to-side movement */
+  @keyframes floatSide {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(8px); }
+    100% { transform: translateX(0); }
+  }
+  
