@@ -336,6 +336,13 @@ body {
 }
 
 
+.calendly-wrapper {
+  margin: 1rem 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(61,43,31,0.1);
+}
+
 /* ══════════════════════════════════════
    GALLERY
 ══════════════════════════════════════ */
