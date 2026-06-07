@@ -241,80 +241,100 @@ body {
 }
 
 /* ══════════════════════════════════════
-   PRICING
+   ABOVE FOLD — two-column layout
 ══════════════════════════════════════ */
-.pricing-section {
-  padding: 4rem 2.5rem 2rem;
+.above-fold {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2rem;
+  padding: 0 2.5rem;
+  min-height: 85vh;
+  align-items: center;
+  border-bottom: 1px solid rgba(61,43,31,0.08);
 }
 
-.pricing-row {
+.hero {
+  padding: 4rem 0;
+}
+
+.hero-actions {
   display: flex;
-  gap: 1.5rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
 }
 
-.price-card {
-  background: var(--gold-pale);
-  border: 1px solid rgba(201,168,76,0.3);
-  border-radius: var(--radius);
-  padding: 1.5rem 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  min-width: 200px;
+.cta-secondary {
+  background: transparent;
+  color: var(--walnut);
+  border: 1.5px solid rgba(61,43,31,0.25) !important;
 }
 
-.price-label {
+.cta-secondary:hover {
+  border-color: var(--walnut) !important;
+  background: rgba(61,43,31,0.05);
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+
+/* Right column info blocks */
+.hero-aside {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(61,43,31,0.1);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--cream-dark);
+}
+
+.info-block {
+  padding: 1.1rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.info-divider {
+  height: 1px;
+  background: rgba(61,43,31,0.08);
+  flex-shrink: 0;
+}
+
+.info-label {
   font-family: var(--font-ui);
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.info-value {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--walnut);
+  font-weight: 400;
+}
+
+.info-value em {
   color: var(--walnut-mid);
 }
 
-.price-amount {
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  color: var(--walnut);
+.info-sub {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: var(--walnut-mid);
+  margin-top: 0.1rem;
 }
 
-.price-note {
+.info-note {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   color: var(--walnut-mid);
+  opacity: 0.75;
+  margin-top: 0.15rem;
 }
 
-/* ══════════════════════════════════════
-   PAYMENT
-══════════════════════════════════════ */
-.payment-section {
-  padding: 2rem 2.5rem 4rem;
-}
-
-.payment-card {
-  background: var(--cream-dark);
-  border-radius: var(--radius);
-  padding: 1.5rem 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  max-width: 480px;
-  border: 1px solid rgba(61,43,31,0.08);
-}
-
-.payment-email {
-  font-family: var(--font-ui);
-  font-size: 0.9rem;
-  color: var(--gold);
-  letter-spacing: 0.02em;
-}
-
-.payment-note {
-  font-style: italic;
-  color: var(--walnut-mid);
-  font-size: 0.95rem;
-}
 
 /* ══════════════════════════════════════
    GALLERY

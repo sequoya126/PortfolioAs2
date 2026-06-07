@@ -41,37 +41,48 @@
       </nav>
     </header>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-content">
-        <p class="hero-eyebrow">Handcrafted in Ottawa</p>
-        <h1 class="hero-title">Where the piece<br><em>chooses you</em></h1>
-        <p class="hero-sub">Custom jewelry, repairs & wearable art — made with intention.</p>
-        <button class="cta-btn" data-modal="booking">Book a Consultation</button>
-      </div>
-    </section>
+    <!-- TWO-COLUMN: Hero left, Info right -->
+    <div class="above-fold">
 
-    <!-- PRICING -->
-    <section class="pricing-section">
-      <h2 class="section-title">Current Collection</h2>
-      <div class="pricing-row">
-        <div class="price-card">
-          <span class="price-label">All current items</span>
-          <span class="price-amount">$10</span>
-          <span class="price-note">Pay what you can ✦</span>
+      <!-- LEFT: Hero -->
+      <section class="hero">
+        <div class="hero-content">
+          <p class="hero-eyebrow">Handcrafted in Ottawa</p>
+          <h1 class="hero-title">Where the piece<br><em>chooses you</em></h1>
+          <p class="hero-sub">Custom jewelry & repairs — made with intention.</p>
+          <div class="hero-actions">
+            <button class="cta-btn" data-modal="booking">Book Now</button>
+            <button class="cta-btn cta-secondary" data-modal="services">Our Services</button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- PAYMENT -->
-    <section class="payment-section">
-      <h2 class="section-title">Payment</h2>
-      <div class="payment-card">
-        <p>We accept <strong>e-transfer</strong></p>
-        <p class="payment-email">zia.macleancourville@outlook.com</p>
-        <p class="payment-note">Include item name & quantity in your transfer comment.</p>
-      </div>
-    </section>
+      <!-- RIGHT: Quick info -->
+      <aside class="hero-aside">
+        <div class="info-block">
+          <p class="info-label">Location</p>
+          <p class="info-value">Ottawa, Ontario</p>
+        </div>
+        <div class="info-divider"></div>
+        <div class="info-block">
+          <p class="info-label">Payment</p>
+          <p class="info-value">E-transfer accepted</p>
+          <p class="info-sub">zia.macleancourville@outlook.com</p>
+          <p class="info-note">Include item name & quantity in transfer comment.</p>
+        </div>
+        <div class="info-divider"></div>
+        <div class="info-block">
+          <p class="info-label">Response Time</p>
+          <p class="info-value">Within 48 hours</p>
+        </div>
+        <div class="info-divider"></div>
+        <div class="info-block">
+          <p class="info-label">Collection</p>
+          <p class="info-value">All items — <em>pay what you can</em></p>
+        </div>
+      </aside>
+
+    </div>
 
     <!-- GALLERY -->
     <section class="photos">
@@ -89,10 +100,10 @@
             <div class="photo-item" style="background:#e91e8c;" data-title="Rose Quartz" data-price="$10" data-desc="Soft romantic pink."></div>
             <div class="photo-item" style="background:#795548;" data-title="Tiger Eye" data-price="$10" data-desc="Earthy natural brown."></div>
             <!-- Duplicates for seamless loop -->
-            <div class="photo-item" style="background:#c0392b;"></div>
-            <div class="photo-item" style="background:#e67e22;"></div>
-            <div class="photo-item" style="background:#f1c40f;"></div>
-            <div class="photo-item" style="background:#27ae60;"></div>
+            <div class="photo-item" style="background:#c0392b;" data-title="Ruby Gem" data-price="$10" data-desc="A brilliant red stone."></div>
+            <div class="photo-item" style="background:#e67e22;" data-title="Amber Glow" data-price="$10" data-desc="Warm orange hues."></div>
+            <div class="photo-item" style="background:#f1c40f;" data-title="Sun Citrine" data-price="$10" data-desc="Bright yellow sparkles."></div>
+            <div class="photo-item" style="background:#27ae60;" data-title="Emerald Cut" data-price="$10" data-desc="Deep forest green gem."></div>
           </div>
         </div>
       </div>
@@ -276,19 +287,19 @@
         <div class="contact-form-grid">
           <div class="input-group">
             <label>First Name</label>
-            <input type="text" id="booking-firstname" placeholder="Amara">
+            <input type="text" id="booking-firstname" placeholder="">
           </div>
           <div class="input-group">
             <label>Last Name</label>
-            <input type="text" id="booking-lastname" placeholder="Osei">
+            <input type="text" id="booking-lastname" placeholder="">
           </div>
           <div class="input-group full-width">
             <label>Email Address</label>
-            <input type="email" id="booking-email" placeholder="you@example.com">
+            <input type="email" id="booking-email" placeholder="">
           </div>
           <div class="input-group full-width">
             <label>Phone (optional)</label>
-            <input type="tel" id="booking-phone" placeholder="+1 (613) 000-0000">
+            <input type="tel" id="booking-phone" placeholder="">
           </div>
         </div>
         <div class="step-nav">
