@@ -210,10 +210,6 @@
         <div class="step-dot active" data-step="1"></div>
         <div class="step-line"></div>
         <div class="step-dot" data-step="2"></div>
-        <div class="step-line"></div>
-        <div class="step-dot" data-step="3"></div>
-        <div class="step-line"></div>
-        <div class="step-dot" data-step="4"></div>
       </div>
 
       <!-- STEP 1: Service Selection -->
@@ -248,77 +244,19 @@
         </div>
       </div>
 
-      <!-- STEP 2: Date & Time -->
+      <!-- STEP 2: Calendly -->
       <div class="booking-step" id="step-2">
-        <h2 class="modal-title">Pick a Date & Time</h2>
-        <p class="modal-sub">Consultations are 30–60 minutes.</p>
-        <div class="datetime-grid">
-          <div class="input-group">
-            <label>Preferred Date</label>
-            <input type="date" id="booking-date" min="">
-          </div>
-          <div class="input-group">
-            <label>Preferred Time</label>
-            <select id="booking-time">
-              <option value="">Select a time</option>
-              <option>10:00 AM</option>
-              <option>11:00 AM</option>
-              <option>1:00 PM</option>
-              <option>2:00 PM</option>
-              <option>3:00 PM</option>
-              <option>4:00 PM</option>
-            </select>
-          </div>
-          <div class="input-group full-width">
-            <label>Notes (optional)</label>
-            <textarea id="booking-notes" placeholder="Tell Zia a bit about what you have in mind..."></textarea>
-          </div>
+        <h2 class="modal-title">Choose a Time</h2>
+        <p class="modal-sub">Select a date and time that works for you.</p>
+        <div class="calendly-wrapper">
+          <div class="calendly-inline-widget" id="calendlyWidget" data-url="https://calendly.com/zia-chest/30min" style="min-width:300px;height:500px;"></div>
         </div>
         <div class="step-nav">
           <button class="step-btn back-btn" data-target="1">← Back</button>
-          <button class="step-btn next-btn" id="next-2" disabled>Next →</button>
         </div>
       </div>
 
-      <!-- STEP 3: Contact Info -->
-      <div class="booking-step" id="step-3">
-        <h2 class="modal-title">Your Information</h2>
-        <p class="modal-sub">So Zia knows how to reach you.</p>
-        <div class="contact-form-grid">
-          <div class="input-group">
-            <label>First Name</label>
-            <input type="text" id="booking-firstname" placeholder="">
-          </div>
-          <div class="input-group">
-            <label>Last Name</label>
-            <input type="text" id="booking-lastname" placeholder="">
-          </div>
-          <div class="input-group full-width">
-            <label>Email Address</label>
-            <input type="email" id="booking-email" placeholder="">
-          </div>
-          <div class="input-group full-width">
-            <label>Phone (optional)</label>
-            <input type="tel" id="booking-phone" placeholder="">
-          </div>
-        </div>
-        <div class="step-nav">
-          <button class="step-btn back-btn" data-target="2">← Back</button>
-          <button class="step-btn next-btn" id="next-3" disabled>Next →</button>
-        </div>
-      </div>
 
-      <!-- STEP 4: Confirmation -->
-      <div class="booking-step" id="step-4">
-        <div class="confirm-icon">✦</div>
-        <h2 class="modal-title">You're all set!</h2>
-        <p class="modal-sub">Here's a summary of your booking request.</p>
-        <div class="confirm-summary" id="confirmSummary"></div>
-        <p class="confirm-note">Zia will reach out within 48 hours to confirm your appointment.</p>
-        <div class="step-nav centered">
-          <button class="step-btn cta-confirm" id="confirmBtn">Send Request ✦</button>
-        </div>
-      </div>
 
     </div>
   </div>
@@ -338,6 +276,7 @@
     </div>
   </div>
 
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   <script src="main.js"></script>
 </body>
 </html>
