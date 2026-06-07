@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Zia's Jewelry</title>
+  <link rel="stylesheet" href="main.css?v=999">
+
+</head>
+
+<body>
+  
+  <div class="background-image"></div>
+
+
+  <div class="main-page">
+  <div class="cursor-glow"></div>
+    <!-- Floating decorative chests -->
+    <div class="floating-chest" style="--size:40px; --top:10%; --left:5%; --speed:6s;"></div>
+    <div class="floating-chest" style="--size:30px; --top:40%; --left:80%; --speed:4s;"></div>
+    <div class="floating-chest" style="--size:35px; --top:70%; --left:20%; --speed:5s;"></div>
+    <div class="floating-chest" style="--size:25px; --top:60%; --left:60%; --speed:6.5s;"></div>
+    <div class="floating-chest" style="--size:45px; --top:15%; --left:70%; --speed:5.5s;"></div>
+    <div class="floating-chest" style="--size:30px; --top:85%; --left:40%; --speed:7s;"></div>
+
+    <!-- Page content -->
+    <header class="site-header">
+      <div class="|header-left">
+        <div class="logo-circle">
+          <img scr="images/Logo_Zia_Chest.png" alt ="Zia Logo">
+        </div>
+        <h1>Zia's Chest</h1>
+        <p class="Message">Welcome to the wonderful world of Zia’s chest, where the world becomes undone and rather then choose an item it
+          chooses you. ;- )</p>
+      </div>
+
+      <nav class="header-right">
+        <div class="header-item nav">Services</div>
+        <div class="header-item nav">Work</div>
+        <div class="header-item nav">Contact</div>
+        <div class="header-item nav menu">☰</div>
+      </nav>
+    </header>
+
+    <section class="pricing">
+      <h2>Prices</h2>
+      <div class="item">
+        <span class="item-name">All current items</span>
+        <span class="item-price">$10</span>
+        <div class="hover-box">Pay what you can!</div>
+      </div>
+    </section>
+
+    <section class="payment">
+      <h2>Payment Method</h2>
+      <p>We currently accept <strong>e-transfer</strong>.</p>
+      <p>Please send payment to: <strong>zia.macleancourville@outlook.com</strong></p>
+      <p>Please include a comment with the item name and amount purchased for each transaction!</p>
+    </section>
+  
+    <section class="photos">
+      <h2>Gallery (Taps: <span id="tapCounter">0</span>)</h2>
+      <div class="gallery-viewport">
+        <div class="gallery-box">
+        <div class="gallery-track" id="galleryTrack">
+          <div class="photo-item" style="background: red;" data-title="Ruby Gem" data-price="$10" data-desc="A brilliant red stone."></div>
+          <div class="photo-item" style="background: orange;" data-title="Amber Glow" data-price="$10" data-desc="Warm orange hues."></div>
+          <div class="photo-item" style="background: yellow;" data-title="Sun Citrine" data-price="$10" data-desc="Bright yellow sparkles."></div>
+          <div class="photo-item" style="background: green;" data-title="Emerald Cut" data-price="$10" data-desc="Deep forest green gem."></div>
+          <div class="photo-item" style="background: blue;" data-title="Sapphire Blue" data-price="$10" data-desc="Ocean blue sapphire."></div>
+          <div class="photo-item" style="background: indigo;" data-title="Indigo Bead" data-price="$10" data-desc="Mystic dark indigo."></div>
+          <div class="photo-item" style="background: violet;" data-title="Amethyst" data-price="$10" data-desc="Royal purple crystal."></div>
+          <div class="photo-item" style="background: pink;" data-title="Rose Quartz" data-price="$10" data-desc="Soft romantic pink."></div>
+          <div class="photo-item" style="background: brown;" data-title="Tiger Eye" data-price="$10" data-desc="Earthy natural brown."></div>
+          
+          <div class="photo-item" style="background: red;"></div>
+          <div class="photo-item" style="background: orange;"></div>
+          <div class="photo-item" style="background: yellow;"></div>
+          <div class="photo-item" style="background: green;"></div>
+        </div>
+      </div>
+    </div>
+    </section>
+    
+    <div id="photoModal" class="modal-overlay">
+      <div class="modal-card">
+        <button class="close-btn" id="closeBtn">&times;</button>
+        <div class="modal-body">
+          <div class="modal-image-view" id="modalImage"></div>
+          <div class="modal-info-panel">
+            <h3 id="modalTitle">Item Name</h3>
+            <p id="modalDesc">Description goes here...</p>
+            <div class="modal-price" id="modalPrice">$10</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <!-- Large corner name -->
+  <div class="corner-name">ZIA</div>
+
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
